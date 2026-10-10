@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b1020">
+  <title>Nexora — AI Creator Marketplace</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#" data-page="discover"><span class="brand-mark">C</span><span>nexora<span class="brand-dot">.</span></span></a>
+      <div class="workspace-label">WORKSPACE</div>
+      <nav class="side-nav" aria-label="Main navigation">
+        <button class="nav-link active" data-page="discover"><span>⌕</span> Discover creators</button>
+        <button class="nav-link" data-page="shortlist"><span>♡</span> Shortlist <b id="shortlistCount" class="nav-count">0</b></button>
+        <button class="nav-link" data-page="campaigns"><span>▤</span> Campaign briefs</button>
+        <button class="nav-link" data-page="create"><span>＋</span> Create a brief</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="sidebar-note"><span class="note-icon">✦</span><div><strong>Made for creative teams</strong><p>Find the right talent for your next big idea.</p></div></div>
+        <div class="profile-mini"><div class="avatar avatar-you">B</div><div><strong>Brand workspace</strong><small>Demo account</small></div><span class="online-dot"></span></div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div class="mobile-brand"><span class="brand-mark">C</span> nexora<span class="brand-dot">.</span></div>
+        <div class="breadcrumb"><span>Workspace</span><span class="crumb-slash">/</span><strong id="pageCrumb">Discover creators</strong></div>
+        <div class="top-actions"><span class="status-pill"><span class="status-dot"></span> Prototype mode</span><button class="icon-button" id="themeHint" title="Prototype information" aria-label="Prototype information">ⓘ</button></div>
+      </header>
+
+      <section id="page-discover" class="page active">
+        <div class="hero">
+          <div class="hero-copy">
+            <div class="eyebrow"><span class="sparkle">✦</span> THE CREATIVE ECONOMY, REIMAGINED</div>
+            <h1>Meet the minds<br>behind <span class="gradient-text">AI-made magic.</span></h1>
+            <p class="hero-description">Discover independent AI creators, explore their process, and find the perfect creative partner for your next campaign.</p>
+            <div class="hero-actions"><button class="btn btn-primary" data-page="discover">Explore creators <span>↗</span></button><button class="btn btn-quiet" data-page="create">＋ Post a brief</button></div>
+            <div class="hero-proof"><div class="proof-avatars"><span>J</span><span>M</span><span>A</span><span>+</span></div><span><strong>Built for bold ideas</strong><br>Creators × brands × possibilities</span></div>
+          </div>
+          <div class="hero-art" aria-label="Abstract creative artwork">
+            <div class="art-orbit orbit-one"></div><div class="art-orbit orbit-two"></div>
+            <div class="art-card art-card-back"><span>GEN AI / 03</span><div class="art-shape shape-pink"></div><div class="art-shape shape-blue"></div></div>
+            <div class="art-card art-card-front"><div class="art-card-top"><span>CREATIVE SIGNAL</span><span>✦ 2026</span></div><div class="art-sun"></div><div class="art-mountain mountain-one"></div><div class="art-mountain mountain-two"></div><div class="art-card-bottom"><strong>Beyond the ordinary.</strong><span>01 — VISUAL EXPERIMENT</span></div></div>
+            <div class="floating-tag tag-top">✦ Human imagination</div><div class="floating-tag tag-bottom">AI-powered craft ↗</div>
+          </div>
+        </div>
+        <div class="metrics-row">
+          <div class="metric"><span class="metric-icon">◈</span><div><strong id="creatorMetric">8</strong><small>Featured creators</small></div></div>
+          <div class="metric"><span class="metric-icon violet">▧</span><div><strong id="projectMetric">24</strong><small>Portfolio projects</small></div></div>
+          <div class="metric"><span class="metric-icon green">✓</span><div><strong>Process-first</strong><small>Transparent workflows</small></div></div>
+          <div class="metric"><span class="metric-icon orange">↗</span><div><strong>Brief to brief</strong><small>Built for collaboration</small></div></div>
+        </div>
+        <div class="section-heading">
+          <div><div class="eyebrow">YOUR NEXT CREATIVE COLLABORATION</div><h2>Find your kind of creator<span class="heading-period">.</span></h2><p>Explore portfolios, not just profile pictures.</p></div>
+          <button class="text-button" data-page="shortlist">View shortlist <span>→</span></button>
+        </div>
+        <div class="filter-panel">
+          <label class="search-box"><span>⌕</span><input id="searchInput" type="search" placeholder="Search creators, tools, skills..." autocomplete="off"></label>
+          <select id="specialtyFilter" aria-label="Filter by specialization"><option value="">All specializations</option><option>AI Video</option><option>3D & Animation</option><option>AI Graphics</option><option>Product Ads</option><option>Concept Art</option><option>Motion Design</option></select>
+          <select id="toolFilter" aria-label="Filter by AI tool"><option value="">All AI tools</option><option>Midjourney</option><option>Runway</option><option>Blender</option><option>Adobe Firefly</option><option>Stable Diffusion</option><option>After Effects</option><option>DALL·E</option><option>Kling</option></select>
+          <select id="verificationFilter" aria-label="Filter by verification"><option value="">Any workflow status</option><option value="verified">Documented workflow</option><option value="reviewed">Portfolio reviewed</option></select>
+          <button id="clearFilters" class="clear-button">Clear</button>
+        </div>
+        <div class="results-line"><span id="resultsLabel">Showing 8 creators</span><span class="results-sort">Curated for creative range <span>✦</span></span></div>
+        <div id="creatorGrid" class="creator-grid"></div>
+        <div id="noResults" class="empty-state hidden"><div class="empty-icon">⌕</div><h3>No creators found</h3><p>Try another search or clear your filters.</p><button class="btn btn-secondary" id="emptyClear">Clear filters</button></div>
+        <div class="closing-banner"><div class="closing-orb">✦</div><div><span class="eyebrow">HAVE A BIG IDEA?</span><h3>Give your idea a creative team.</h3><p>Turn your campaign thought into a clear, creator-ready brief.</p></div><button class="btn btn-primary" data-page="create">Build a campaign brief <span>↗</span></button></div>
+        <footer>NEXORA <span>·</span> A demo marketplace concept. Sample creators and portfolio work are illustrative.</footer>
+      </section>
+
+      <section id="page-shortlist" class="page">
+        <div class="page-intro"><div class="eyebrow">YOUR CREATIVE SHORTLIST</div><h1>Keep the ones<br><span class="gradient-text">that spark something.</span></h1><p>Save promising creators here while you explore the marketplace.</p></div>
+        <div id="shortlistGrid" class="creator-grid"></div>
+        <div id="shortlistEmpty" class="empty-state"><div class="empty-icon">♡</div><h3>Your shortlist starts here</h3><p>Save creators from Discover to compare them here.</p><button class="btn btn-primary" data-page="discover">Discover creators <span>→</span></button></div>
+      </section>
+
+      <section id="page-campaigns" class="page">
+        <div class="page-intro split-intro"><div><div class="eyebrow">CAMPAIGN WORKSPACE</div><h1>Your ideas,<br><span class="gradient-text">ready to take shape.</span></h1><p>Keep campaign requirements organized in one place.</p></div><button class="btn btn-primary" data-page="create">＋ Create brief</button></div>
+        <div id="campaignStats" class="campaign-stats"></div>
+        <div id="campaignList" class="campaign-list"></div>
+        <div id="campaignEmpty" class="empty-state"><div class="empty-icon">▤</div><h3>No campaign briefs yet</h3><p>Start with a rough idea. You can refine the details as you go.</p><button class="btn btn-primary" data-page="create">Create your first brief <span>→</span></button></div>
+      </section>
+
+      <section id="page-create" class="page">
+        <div class="page-intro"><div class="eyebrow">FROM ROUGH IDEA TO CREATIVE DIRECTION</div><h1>Make your brief<br><span class="gradient-text">impossible to misread.</span></h1><p>Share the goal and the details creators need to bring it to life.</p></div>
+        <div class="brief-layout">
+          <form id="briefForm" class="brief-form">
+            <div class="form-section-title"><span class="form-step">01</span><div><h3>The big idea</h3><p>Give this campaign a name and purpose.</p></div></div>
+            <label>Campaign title <span class="required">*</span><input name="title" required maxlength="90" placeholder="e.g. A brighter kind of skincare"></label>
+            <label>Rough campaign idea <span class="required">*</span><textarea name="idea" required rows="4" placeholder="What are you launching? Who is it for? What should people feel or do?"></textarea></label>
+            <div class="assistant-box"><div class="assistant-heading"><span class="assistant-icon">✦</span><div><strong>Brief Builder</strong><small>Turn a rough thought into a structured starting point.</small></div><span class="demo-tag">TEMPLATE</span></div><button class="btn btn-secondary btn-full" type="button" id="buildBrief">✦ Structure my idea</button><div id="structuredPreview" class="structured-preview hidden"></div></div>
+            <div class="form-section-title"><span class="form-step">02</span><div><h3>Creative direction</h3><p>Describe what needs to be made.</p></div></div>
+            <div class="form-two-col"><label>Content type<select name="contentType" required><option value="AI graphics">AI graphics</option><option>AI video</option><option>Animation</option><option>Product advertisement</option><option>Concept art</option><option>Social media campaign</option></select></label><label>Visual style<select name="style"><option>Editorial & premium</option><option>Playful & colorful</option><option>Minimal & clean</option><option>Cinematic & dramatic</option><option>Futuristic & experimental</option><option>Natural & organic</option></select></label></div>
+            <div class="form-two-col"><label>Aspect ratio<select name="ratio"><option>4:5 — Social feed</option><option>9:16 — Reels / Stories</option><option>16:9 — Landscape video</option><option>1:1 — Square</option><option>Custom / multiple</option></select></label><label>Preferred tools<input name="tools" placeholder="e.g. Midjourney, Runway"></label></div>
+            <label>Deliverables <input name="deliverables" placeholder="e.g. 3 visuals + 1 short video"></label>
+            <div class="form-section-title"><span class="form-step">03</span><div><h3>Scope & usage</h3><p>Set expectations up front.</p></div></div>
+            <div class="form-two-col"><label>Budget range<select name="budget"><option>Under ₹5,000</option><option>₹5,000–₹15,000</option><option>₹15,000–₹40,000</option><option>₹40,000+</option><option>To be discussed</option></select></label><label>Target deadline<input name="deadline" type="date" id="deadlineInput"></label></div>
+            <label>Commercial usage<select name="usage"><option>Commercial use required</option><option>Organic social only</option><option>Paid advertising</option><option>Internal concept / exploration</option><option>Discuss usage with creator</option></select></label>
+            <label>Extra notes <textarea name="notes" rows="2" placeholder="Brand guidelines, audience, must-haves, things to avoid..."></textarea></label>
+            <div class="form-actions"><button type="reset" class="btn btn-quiet">Reset form</button><button type="submit" class="btn btn-primary">Save campaign brief <span>↗</span></button></div>
+          </form>
+          <aside class="brief-side">
+            <div class="side-card side-card-glow"><span class="side-card-icon">✦</span><h3>Great work starts with clarity.</h3><p>A thoughtful brief helps creators understand your audience, goals, format, and how their work will be used.</p><div class="check-row"><span>✓</span> Clear creative direction</div><div class="check-row"><span>✓</span> Transparent usage needs</div><div class="check-row"><span>✓</span> Fewer back-and-forths</div></div>
+            <div class="side-card"><div class="side-card-label">QUICK CHECKLIST</div><div class="checklist-item"><span>01</span> State the goal</div><div class="checklist-item"><span>02</span> Pick a content format</div><div class="checklist-item"><span>03</span> Share required deliverables</div><div class="checklist-item"><span>04</span> Clarify commercial usage</div></div>
+            <p class="disclaimer">The Brief Builder uses a local template in this prototype; it does not call a live AI service.</p>
+          </aside>
+        </div>
+      </section>
+
+      <section id="page-portfolio" class="page">
+        <button class="back-link" id="backFromPortfolio">← Back to discovery</button>
+        <div id="portfolioDetail"></div>
+      </section>
+    </main>
+  </div>
+
+  <div id="projectModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="projectModalTitle">
+    <div class="modal-backdrop" data-close-modal></div><div class="modal-panel project-modal-panel"><button class="modal-close" data-close-modal aria-label="Close">×</button><div id="projectModalContent"></div></div>
+  </div>
+  <div id="inviteModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="inviteTitle">
+    <div class="modal-backdrop" data-close-modal></div><div class="modal-panel invite-panel"><button class="modal-close" data-close-modal aria-label="Close">×</button><div class="eyebrow">START A COLLABORATION</div><h2 id="inviteTitle">Invite to a campaign</h2><p>Choose a saved campaign brief to use as a starting point.</p><div id="inviteChoices"></div><button class="btn btn-quiet btn-full" data-close-modal>Cancel</button></div>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
